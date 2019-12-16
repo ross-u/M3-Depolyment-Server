@@ -33,19 +33,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // CORS SETTINGS TO ALLOW CROSS-ORIGIN INTERACTION:
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://r1dep.herokuapp.com'], // <== this will be the URL of our React app (it will be running on port 3000)
+  origin: ['http://localhost:3000'], // <== this will be the URL of our React app (it will be running on port 3000)
 }));
 
 // ROUTES MIDDLEWARE:
 app.use('/api', projectRouter);
 app.use('/api', taskRouter);
-
-
-// REACT APP index.html	
-app.use((req, res, next) => {
-  // If no routes match, send them the React HTML.
-  res.sendFile(__dirname + "/public/index.html");
-});
 
 
 module.exports = app;
